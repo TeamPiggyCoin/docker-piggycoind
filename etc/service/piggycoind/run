@@ -1,0 +1,33 @@
+#!/bin/sh
+exec 2>&1
+
+if [ ! -e /root/.newpiggycoin/newpiggycoin.conf ]; then
+cat <<EOF > /root/.newpiggycoin/newpiggycoin.conf
+listen=1
+staking=1
+
+rpcuser=PiggyRPC
+rpcpassword=OneSuperStrongPassword
+
+port=54481
+rpcport=54480
+rpcallowip=0.0.0.0
+daemon=1
+server=1
+EOF
+fi
+
+/usr/bin/newpiggycoind -logtimestamps -printtoconsole
+
+sleep 30
+while :
+do
+  case "$(pidof newpiggycoind | wc -w)" in
+    0)  exit 1 ;;
+    1)  ;; # all ok
+    *)  echo "Removed double piggycoind: $(date)"
+        kill $(pidof newpiggycoind | awk '{print $1}') ;;
+  esac
+  sleep 30
+done
+
