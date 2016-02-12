@@ -1,6 +1,6 @@
-[<https://imagelayers.io/?images=teampiggycoin%2Fpiggycoind:latest>](https://imagelayers.io/?images=teampiggycoin%2Fpiggycoind:latest)
+[![](https://badge.imagelayers.io/teampiggycoin/piggycoind.svg)](https://imagelayers.io/?images=teampiggycoin/piggycoind 'Get your own badge on imagelayers.io')
 
-This is a trusted build on the DockerHub repository.
+This is a trusted build on the [DockerHub repository](https://hub.docker.com/r/teampiggycoin/piggycoind/).
 
 To run:
 
