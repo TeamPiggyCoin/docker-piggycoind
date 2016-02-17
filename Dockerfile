@@ -1,11 +1,7 @@
 #BUILDS: teampiggycoin/piggycoind
 
-FROM gliderlabs/alpine:3.3
+FROM qlustor/alpine-runit:3.3
 MAINTAINER Team PiggyCoin <team@piggy-coin.com>
-
-# Install runit
-RUN echo "http://dl-4.alpinelinux.org/alpine/edge/testing" >>/etc/apk/repositories \
- && apk-install --update runit
 
 # Here we use several hacks collected from https://github.com/gliderlabs/docker-alpine/issues/11:
 # 1. install GLibc (which is not the cleanest solution at all)
@@ -22,7 +18,7 @@ RUN apk add --no-cache --virtual=build-dependencies wget ca-certificates && \
     apk del build-dependencies && \
     rm "$ALPINE_GLIBC_PACKAGE" "$ALPINE_GLIBC_BIN_PACKAGE"
 
-# Install runit-docker & piggycoind
+# Install piggycoind
 ADD . /
 
 EXPOSE 54480-54481
