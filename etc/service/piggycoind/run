@@ -17,7 +17,7 @@ server=1
 EOF
 fi
 
-exec /usr/bin/newpiggycoind -logtimestamps
+/usr/bin/newpiggycoind -logtimestamps
 
 sleep 30
 while :
