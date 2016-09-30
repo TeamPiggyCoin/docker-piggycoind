@@ -8,9 +8,9 @@ MAINTAINER Team PiggyCoin <team@piggy-coin.com>
 # 2. hotfix /etc/nsswitch.conf, which is apperently required by glibc and is not used in Alpine Linux
 # Credits to (Vlad Frolov)[https://github.com/frol/docker-alpine-glibc] for this fix.
 RUN apk add --no-cache --virtual=build-dependencies wget ca-certificates && \
-    export ALPINE_GLIBC_BASE_URL="https://circle-artifacts.com/gh/andyshinn/alpine-pkg-glibc/6/artifacts/0/home/ubuntu/alpine-pkg-glibc/packages/x86_64" && \
-    export ALPINE_GLIBC_PACKAGE="glibc-2.21-r2.apk" && \
-    export ALPINE_GLIBC_BIN_PACKAGE="glibc-bin-2.21-r2.apk" && \
+    export ALPINE_GLIBC_BASE_URL="https://github.com/sgerrand/alpine-pkg-glibc/releases/download" && \
+    export ALPINE_GLIBC_PACKAGE="2.21-r2/glibc-2.21-r2.apk" && \
+    export ALPINE_GLIBC_BIN_PACKAGE="2.21-r2/glibc-bin-2.21-r2.apk" && \
     wget "$ALPINE_GLIBC_BASE_URL/$ALPINE_GLIBC_PACKAGE" "$ALPINE_GLIBC_BASE_URL/$ALPINE_GLIBC_BIN_PACKAGE" && \
     apk add --no-cache --allow-untrusted "$ALPINE_GLIBC_PACKAGE" "$ALPINE_GLIBC_BIN_PACKAGE" && \
     /usr/glibc/usr/bin/ldconfig "/lib" "/usr/glibc/usr/lib" && \
@@ -24,4 +24,3 @@ ADD . /
 EXPOSE 54480-54481
 VOLUME /root/.newpiggycoin
 ENTRYPOINT ["/sbin/runit-docker"]
-
