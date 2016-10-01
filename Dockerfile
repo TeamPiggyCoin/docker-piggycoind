@@ -1,6 +1,6 @@
 #BUILDS: teampiggycoin/piggycoind
 
-FROM qlustor/alpine-runit:3.3
+FROM qlustor/alpine-runit
 MAINTAINER Team PiggyCoin <team@piggy-coin.com>
 
 # Here we use several hacks collected from https://github.com/gliderlabs/docker-alpine/issues/11:

@@ -1,4 +1,4 @@
-[![](https://badge.imagelayers.io/teampiggycoin/piggycoind.svg)](https://imagelayers.io/?images=teampiggycoin/piggycoind 'Get your own badge on imagelayers.io')
+[![](https://images.microbadger.com/badges/image/teampiggycoin/piggycoind.svg)](https://microbadger.com/images/teampiggycoin/piggycoind "Get your own image badge on microbadger.com")
 
 This is a trusted build on the [DockerHub repository](https://hub.docker.com/r/teampiggycoin/piggycoind/).
 
