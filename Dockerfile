@@ -1,6 +1,6 @@
 #BUILDS: teampiggycoin/piggycoind
 
-FROM qlustor/alpine-runit:3.3
+FROM qlustor/alpine-runit
 MAINTAINER Team PiggyCoin <team@piggy-coin.com>
 
 # Here we use several hacks collected from https://github.com/gliderlabs/docker-alpine/issues/11:
@@ -8,7 +8,7 @@ MAINTAINER Team PiggyCoin <team@piggy-coin.com>
 # 2. hotfix /etc/nsswitch.conf, which is apperently required by glibc and is not used in Alpine Linux
 # Credits to (Vlad Frolov)[https://github.com/frol/docker-alpine-glibc] for this fix.
 RUN apk add --no-cache --virtual=build-dependencies wget ca-certificates && \
-    export ALPINE_GLIBC_BASE_URL="https://circle-artifacts.com/gh/andyshinn/alpine-pkg-glibc/6/artifacts/0/home/ubuntu/alpine-pkg-glibc/packages/x86_64" && \
+    export ALPINE_GLIBC_BASE_URL="https://github.com/sgerrand/alpine-pkg-glibc/releases/download/2.21-r2" && \
     export ALPINE_GLIBC_PACKAGE="glibc-2.21-r2.apk" && \
     export ALPINE_GLIBC_BIN_PACKAGE="glibc-bin-2.21-r2.apk" && \
     wget "$ALPINE_GLIBC_BASE_URL/$ALPINE_GLIBC_PACKAGE" "$ALPINE_GLIBC_BASE_URL/$ALPINE_GLIBC_BIN_PACKAGE" && \
@@ -25,4 +25,3 @@ EXPOSE 54481
 VOLUME /root/.newpiggycoin
 WORKDIR /root/.newpiggycoin
 ENTRYPOINT ["/sbin/runit-docker"]
-
