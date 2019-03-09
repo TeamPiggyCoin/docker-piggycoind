@@ -20,6 +20,8 @@ RUN apk add --no-cache --virtual=build-dependencies wget ca-certificates && \
 
 # Install piggycoind
 ADD . /
+RUN chmod a+x /usr/bin/newpiggycoind \
+ && chmod a+x /etc/service/piggycoind/run
 
 EXPOSE 54481
 VOLUME /root/.newpiggycoin
