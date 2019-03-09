@@ -5,6 +5,8 @@ if [ ! -e /root/.newpiggycoin/newpiggycoin.conf ]; then
 cat <<EOF > /root/.newpiggycoin/newpiggycoin.conf
 listen=1
 staking=1
+txindex=1
+logtimestamps=1
 
 rpcuser=PiggyRPC
 rpcpassword=OneSuperStrongPassword
