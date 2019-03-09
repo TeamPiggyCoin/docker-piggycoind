@@ -21,7 +21,8 @@ RUN apk add --no-cache --virtual=build-dependencies wget ca-certificates && \
 # Install piggycoind
 ADD . /
 
-EXPOSE 54480-54481
+EXPOSE 54481
 VOLUME /root/.newpiggycoin
+WORKDIR /root/.newpiggycoin
 ENTRYPOINT ["/sbin/runit-docker"]
 
